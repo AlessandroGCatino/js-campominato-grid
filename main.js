@@ -1,13 +1,36 @@
 const grigliaHtml = document.getElementById('grid')
 
-document.getElementById('start').addEventListener("click", function () {
 
+
+
+document.getElementById('start').addEventListener("click", function () {
+    
+    let difficulty = document.getElementById("userSel").value
+    let assignDiff = ""
+
+    
     grigliaHtml.innerHTML=""
     grigliaHtml.style += "border: 2px solid black;"
-    for (let i = 0; i < 100; i++) {
+
+
+    for (let i = 0; i < difficulty; i++) {
 
         let square = document.createElement("div")
         square.classList.add("square")
+        switch (difficulty){
+            case "81":
+                square.classList.add("medium")
+                break;
+    
+            case "49":
+                square.classList.add("hard")
+                break;
+    
+            default:
+                square.classList.add("easy")
+        }
+
+        console.log(square.classList)
         square.innerHTML = `<span>${ i+1 }</span>`
 
         square.addEventListener('click', function () {
